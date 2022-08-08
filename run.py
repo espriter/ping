@@ -7,7 +7,7 @@ def ping_nas(request):
     ping_list = ["sothojishin.direct.quickconnect.to"]
 
     # URL 읽기
-    f = open("/home/espriter/github/ping/webhook_url.txt", 'r')
+    f = open("/home/espriter/git/ping/webhook_url.txt", 'r')
     url_read = f.readline()
     f.close()
 
