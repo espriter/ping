@@ -3,7 +3,7 @@ from ping3 import ping
 import requests as res
 import json
 
-def ping_nas(request):
+def ping_nas():
     ping_list = ["sothojishin.direct.quickconnect.to"]
 
     # URL 읽기
@@ -30,3 +30,5 @@ def ping_nas(request):
             time.sleep(2)
     except Exception as e:
         print("Error Log = ", e)
+
+ping_nas()
