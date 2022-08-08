@@ -11,19 +11,22 @@ def ping_nas(request):
     url_read = f.readline()
     f.close()
 
-    for lst in ping_list:
-        result = ping(lst)
-        if result == False:
-            fail_msg = str('NAS Ping이 실패했어요! → ' + lst)
-            headers = {"Content-type": "application/json"}
-            data = {"text": fail_msg }
-            res_result = res.post(url_read, headers=headers, data=json.dumps(data))
-            print(res_result.status_code)
+    try:
+        for lst in ping_list:
+            result = ping(lst)
+            if result == False:
+                fail_msg = str('NAS Ping이 실패했어요! → ' + lst)
+                headers = {"Content-type": "application/json"}
+                data = {"text": fail_msg }
+                res_result = res.post(url_read, headers=headers, data=json.dumps(data))
+                print(res_result.status_code)
 
-        else:
-            success_msg = str('NAS Ping이 성공했어요! → ' + lst)
-            headers = {"Content-type": "application/json"}
-            data = {"text": success_msg }
-            res_result = res.post(url_read, headers=headers, data=json.dumps(data))
-            print(res_result.status_code)
-        time.sleep(2)
+            else:
+                success_msg = str('NAS Ping이 성공했어요! → ' + lst)
+                headers = {"Content-type": "application/json"}
+                data = {"text": success_msg }
+                res_result = res.post(url_read, headers=headers, data=json.dumps(data))
+                print(res_result.status_code)
+            time.sleep(2)
+    except Exception as e:
+        print("Error Log = ", e)
